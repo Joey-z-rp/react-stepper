@@ -5,8 +5,9 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
+import Step5 from './Step5';
 
-const steps = [Step1, Step2, Step3, Step4];
+const steps = [Step1, Step2, Step3, Step4, Step5];
 const initialValues = { field1: 'field1 default value', field2: 'field2', email: 'myEmail' };
 const validator1 = values => {
 	const errors = {};
@@ -22,9 +23,7 @@ const validator2 = values => {
 	return errors;
 };
 
-const validator3 = () => ({});
-
-const validators = [validator1, validator2, validator3, validator3];
+const validators = [validator1, validator2, null, null, null];
 
 const handleSubmit = (values, action) => {
 	console.log(values)

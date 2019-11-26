@@ -6,7 +6,6 @@ const SteppedWidget = props => {
     const { steps, initialValues, validators, handleSubmit } = props;
     const Step = steps[activeStep]
     const stepTo = increment => {
-        
         setActiveStep(step => {
             const targetStep = step + increment;
             const isWithinLimit = targetStep < steps.length && targetStep >= 0;
@@ -33,7 +32,11 @@ const SteppedWidget = props => {
         <Formik
             initialValues={initialValues}
             validate={values => {
-                return validators[activeStep](values);
+                const validator = validators[activeStep];
+
+                if (typeof validator === 'function') {
+                    return validators[activeStep](values);
+                }
             }}
             onSubmit={handleSubmit}
         >
