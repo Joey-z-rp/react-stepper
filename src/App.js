@@ -26,11 +26,21 @@ const validator3 = () => ({});
 
 const validators = [validator1, validator2, validator3, validator3];
 
+const handleSubmit = (values, action) => {
+	console.log(values)
+	setTimeout(() => action.setSubmitting(false), 2000);
+};
+
 function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<Stepper validators={validators} steps={steps} initialValues={initialValues} />
+				<Stepper
+					handleSubmit={handleSubmit}
+					validators={validators}
+					steps={steps}
+					initialValues={initialValues}
+				/>
 			</header>
 		</div>
 	);
